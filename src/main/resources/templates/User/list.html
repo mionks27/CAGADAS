@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="base :: head(index)">
+</head>
+<body>
+<nav th:insert="base :: navbar"></nav>
+
+<div class="container" id="contenido">
+    <h1>Lista de Empleados</h1>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/nuevo}">Nuevo empleado</a>
+    <!-- COMPLETAR -->
+    <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/employee/search}">
+        <input name="searchField" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+
+
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="empleado, info : ${lista}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${empleado.firstname}"></td>
+            <td th:text="${empleado.lastname}"></td>
+            <td th:text="${empleado.email}"></td>
+            <td><a class="btn btn-primary"
+                   th:href="@{'/user/editar' + '?id=' + ${empleado.id_user}}">Editar</a>
+            </td>
+            <td><a class="btn btn-danger" th:href="@{'/user/borrar' + '?id=' + ${empleado.id_user}}">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

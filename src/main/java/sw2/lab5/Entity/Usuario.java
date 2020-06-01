@@ -1,6 +1,8 @@
 package sw2.lab5.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -12,14 +14,20 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_user;
     @Column(nullable = false)
+    @NotBlank(message = "No puede ser vacío")
+    @Size(max = 50, message = "no puede exceder los 50 caracteres")
     private String firstname;
     @Column(nullable = false)
+    @NotBlank(message = "No puede ser vacío")
+    @Size(max = 50, message = "no puede exceder los 50 caracteres")
     private String lastname;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
+    @NotBlank(message = "No puede ser vacío")
     private String intro;
+    @NotBlank(message = "No puede ser vacío")
     private String profile;
     @Column(nullable = false)
     private int active;
