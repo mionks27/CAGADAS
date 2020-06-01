@@ -7,7 +7,29 @@
     <nav th:insert="base :: navbar"></nav>
 
     <div class="container" id="contenido">
-        <!-- Contenido -->
+        <h3>Lista de Posts</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Nombre Autor</th>
+                    <th>Resumen</th>
+                    <th sec:authorize="hasAnyAuthority('admin')">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="x:${lista}">
+                    <td th:text="${x.id_post}"></td>
+                    <td th:text="${x.title}"></td>
+                    <td th:text="${x.author.firstname + ' ' + x.author.lastname}"></td>
+                    <td th:text="${x.summary}"></td>
+                    <td sec:authorize="hasAnyAuthority('admin')">
+                        <a class="btn btn-danger" th:href="@{/posts/borrar(id=${x.id_post})}">Borrar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

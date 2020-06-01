@@ -1,24 +1,27 @@
 package sw2.lab5.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Role {
+public class Role implements Serializable {
+
+    public int getId_role() {
+        return id_role;
+    }
+
+    public void setId_role(int id_role) {
+        this.id_role = id_role;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_rol;
+    private int id_role;
     @Column(nullable = false)
     private String role_name;
 
 
-    public int getId_rol() {
-        return id_rol;
-    }
 
-    public void setId_rol(int id_rol) {
-        this.id_rol = id_rol;
-    }
 
     public String getRole_name() {
         return role_name;

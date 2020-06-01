@@ -23,6 +23,6 @@ public class LoginController {
     public String redirigir(Authentication auth, HttpSession session){
         Usuario usuarioLogueado = ususarioRepository.findByEmail(auth.getName());
         session.setAttribute("user",usuarioLogueado);
-        return "redirect:/post";
+        return "redirect:/posts";
     }
 }
