@@ -1,7 +1,5 @@
 package sw2.lab5.Entity;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.*;
 
 @Entity
