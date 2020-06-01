@@ -7,22 +7,23 @@
 <nav th:insert="base :: navbar"></nav>
 
 <div class="container" id="contenido">
+    <br><br>
     <h3>Editar/Crear Post</h3>
     <form method="post" th:action="@{/posts/guardar}" th:object="${post}">
-        <div class="form-control">
+        <div class="form-group">
             <label>Título:</label>
             <input type="text" class="form-control" th:text="*{title}">
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label>Resumen:</label>
             <input type="text" class="form-control" th:text="*{summary}">
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label>Contenido:</label>
             <input type="text" class="form-control" th:text="*{content}">
         </div>
-        <button type="submit">Aceptar</button>
-        <button th:href="@{/posts}">Cancelar</button>
+        <button class="btn btn-primary" type="submit">Aceptar</button>
+        <a class="btn btn-danger" th:href="@{/posts}">Cancelar</a>
     </form>
 </div>
 </body>
