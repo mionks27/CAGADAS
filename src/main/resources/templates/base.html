@@ -36,8 +36,9 @@
         <div th:if="${session.user==null}" sec:authorize="isAnonymous()" id="usuarioAnonimo">
             <a class="btn btn-info" th:href="@{/loginForm}">Iniciar Sesión</a>
         </div>
-        <div th:if="${session.user!=null}"  sec:authorize="isAuthenticated()" id="usuarioAutenticado">
-            <span th:text="|Bienvenido ${session.user.firstname} ${session.user.lastname}|"></span>
+        <div class="d-flex col-lg-4" th:if="${session.user!=null}"  sec:authorize="isAuthenticated()" id="usuarioAutenticado">
+            <span style="padding-top: 0.4rem" class="text-white" th:text="|Bienvenido ${session.user.firstname} ${session.user.lastname}|"></span>
+            <div class="col-lg-1"></div>
             <form th:action="@{/cerrar}" method="post">
                 <input class="btn btn-info" type="submit" value="(Cerrar Sesión)"/>
             </form>
