@@ -28,7 +28,7 @@
                 <a class="nav-link" th:href="@{'/user/perfil' + '?id=' + ${session.user.id_user}}">Ver mi perfil</a>
             </li>
             <li sec:authorize="hasAnyAuthority('admin','user')" class="nav-item">
-                <a class="nav-link" href="#">Crear Post</a>
+                <a class="nav-link" th:href="@{/posts/crear}">Crear Post</a>
             </li>
         </ul>
 

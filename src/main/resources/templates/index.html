@@ -6,13 +6,15 @@
 <body>
     <nav th:insert="base :: navbar"></nav>
 
-    <div class="container" id="contenido">
+    <div class="container" id="contenido" >
+        <br><br>
         <h3>Lista de Posts</h3>
+        <div th:if="${msg!=null}" th:text="${msg}" class="alert"></div>
         <table>
             <thead>
-                <tr>
+                <tr  style="text-align: center">
                     <th>ID</th>
-                    <th>Título</th>
+                    <th >Título</th>
                     <th>Nombre Autor</th>
                     <th>Resumen</th>
                     <th sec:authorize="hasAnyAuthority('admin')">Borrar</th>
